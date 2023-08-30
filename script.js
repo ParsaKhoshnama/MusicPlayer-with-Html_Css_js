@@ -6,6 +6,7 @@ let counter=0
 let progressBarCounter=0
 let progressBarFlag=true
 
+let isPlaying=false
 
 let totalTime
 let timer
@@ -82,6 +83,10 @@ function playOnClick(event){
     
 }
 function playFunction(){
+    if(!isPlaying){
+        audio.play()
+        isPlaying=true
+    }
     currentTime()
    currentProgress()
 }
@@ -126,11 +131,10 @@ function showInformation(){
 }
 
 function currentTime(){
+
     if(playFlag)
     {
         playFlag=false
-        let minutes=0
-        let seconds=0
         audio.play()
 
                 timer=setInterval(function(){
@@ -142,7 +146,11 @@ function currentTime(){
             }
            counter++
            if(counter>totalTime)
+           {
                 clearInterval(timer)
+                showInformation()
+                
+           }
             else{
              //   progress.style.width=((counter/totalTime)*360)+'px'
              //   solidCircle.style.transform='translateX('+((counter/totalTime)*360)+'px)'
@@ -208,16 +216,15 @@ function progressBarOnClick(event){
     
     playFlag=true
     progressBarFlag=true
-    audio.pause()
+   // audio.pause()
     counter=Math.floor((width/360)*totalTime)
     progressBarCounter=Math.floor((width/360)*totalTime)
-    audio.currentTime=counter
-    clculateTime(counter)
     setTimeout(function(){
+        audio.currentTime=counter
+        clculateTime(counter)
         if(play.classList.contains('fa-pause'))
         {
-        
         playFunction()
         }
-    },600)
+    },790)
 }
