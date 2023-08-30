@@ -206,8 +206,10 @@ function progressBarOnClick(event){
     progressBarCounter=Math.floor((width/360)*totalTime)
     audio.currentTime=counter
     clculateTime(counter)
-    if(play.classList.contains('fa-pause'))
+   if(play.classList.contains('fa-pause'))
+    {
         setTimeout(function(){
         playFunction()
-        },800)
+        },880)
+    }
 }
