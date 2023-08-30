@@ -193,7 +193,7 @@ function progressBarOnClick(event){
     progress.style.transition='none'
     solidCircle.style.transition='none'
     progress.style.width=width + 'px'
-    solidCircle.style.transform='translateX('+(event.pageX-solidCircle.offsetLeft - 1.2) + 'px)'
+    solidCircle.style.transform='translateX('+(event.pageX-solidCircle.offsetLeft - 1) + 'px)'
   //  clearInterval(timer)
   //  clearInterval(progressTimer)
     progress.style.transition='width 0.1s linear'
@@ -209,5 +209,5 @@ function progressBarOnClick(event){
     if(play.classList.contains('fa-pause'))
         setTimeout(function(){
         playFunction()
-        },1000)
+        },800)
 }
