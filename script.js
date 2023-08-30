@@ -1,11 +1,24 @@
+
+/*Global Variables*/
 let songsIndex=0
+let playFlag=true
+let counter=0
+let progressBarCounter=0
+let progressBarFlag=true
+let totalTime
+
+let timer
+let progressTimer
+
+/*Global Variables*/
 let audio=document.querySelector('audio')
+let progressContainer=document.querySelector('.progress-container')
 let progress=document.querySelector('#progress')
 let solidCircle=document.querySelector('.solidCircle')
 let currentTimeElement=document.querySelector('#current-time')
 let duration=document.querySelector('#duration')
 
-
+totalTime=Math.ceil(audio.duration)
 
 let songs=[
     {
@@ -30,7 +43,6 @@ let songs=[
 
 
 
-let playFlag=true
 let backWard=document.querySelector('.fa-backward')
 let play=document.querySelector('.main-button')
 let forward=document.querySelector('.fa-forward')
@@ -42,14 +54,8 @@ backWard.addEventListener('click',backWardOnClick)
 play.addEventListener('click',playOnClick)
 forward.addEventListener('click',forwardOnClick)
 
+progressContainer.addEventListener('click',progressBarOnClick)
 
-
-
-
-let counter=0
-let progressBarCounter=0
-let progressBarFlag=true
-let totalTime=Math.ceil(audio.duration)
 
 
 
@@ -64,13 +70,17 @@ function backWardOnClick(event){
 
 function playOnClick(event){
   
-   currentTime()
-   currentProgress()
-
+   playFunction()
+   play.classList.toggle('fa-play')
+    play.classList.toggle('fa-pause')
     
 }
+function playFunction(){
+    currentTime()
+   currentProgress()
+}
 
-function forwardOnClick(event){
+function forwardOnClick(event=0){
     songsIndex++
     if(songsIndex>(songs.length - 1))
         songsIndex=0
@@ -116,7 +126,7 @@ function currentTime(){
         let seconds=0
         audio.play()
 
-        let timer=setInterval(function(){
+                timer=setInterval(function(){
             if(playFlag)
             {
                 progressBarFlag=true
@@ -149,21 +159,20 @@ function currentTime(){
         audio.pause()
         playFlag=true
     }
-    play.classList.toggle('fa-play')
-    play.classList.toggle('fa-pause')
+  //  play.classList.toggle('fa-play')
+   // play.classList.toggle('fa-pause')
 }
-
 function currentProgress(){
     if(progressBarFlag){
         progressBarFlag=false
-        let timer=setInterval(function(){
+         progressTimer=setInterval(function(){
             if(progressBarFlag){
-                clearInterval(timer)
+                clearInterval(progressTimer)
                 return
             }
             progressBarCounter +=0.3
             if(Math.floor(progressBarCounter)>totalTime)
-                clearInterval(timer)
+                clearInterval(progressTimer)
             else{
                    progress.style.width=((progressBarCounter/totalTime)*360)+'px'
                    solidCircle.style.transform='translateX('+((progressBarCounter/totalTime)*360)+'px)'
@@ -172,3 +181,26 @@ function currentProgress(){
     }
 }
 
+
+
+function progressBarOnClick(event){
+    let width=event.pageX-progressContainer.offsetLeft
+    progress.style.transition='none'
+    solidCircle.style.transition='none'
+    progress.style.width=width + 'px'
+    solidCircle.style.transform='translateX('+(event.pageX-solidCircle.offsetLeft - 1.2) + 'px)'
+  //  clearInterval(timer)
+  //  clearInterval(progressTimer)
+    progress.style.transition='width 0.1s linear'
+    solidCircle.style.transition='transform 0.1s linear'
+    
+    playFlag=true
+    progressBarFlag=true
+    audio.pause()
+    counter=Math.floor((width/360)*totalTime)
+    progressBarCounter=Math.floor((width/360)*totalTime)
+    audio.currentTime=counter
+    setTimeout(function(){
+        playFunction()
+    },1000)
+}

@@ -175,7 +175,7 @@ user-select: none;
     border-radius: 100%;
     position: relative;
    top:-1.5px;
-   left:-2px;
+   left:-2.3px;
    z-index: 10;
     background-color:#242323 ;
     transition: transform 0.1s linear;
