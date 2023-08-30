@@ -139,17 +139,7 @@ function currentTime(){
             else{
              //   progress.style.width=((counter/totalTime)*360)+'px'
              //   solidCircle.style.transform='translateX('+((counter/totalTime)*360)+'px)'
-                minutes=Math.floor(counter/ 60)
-                seconds=counter % 60
-                
-                if(minutes<10 && seconds>=10)
-                    currentTimeElement.innerHTML='0'+minutes +':'+seconds
-                else if(minutes>=10 && seconds<10)
-                currentTimeElement.innerHTML=minutes +':0'+seconds
-                else if(minutes<10 && seconds<10)
-                currentTimeElement.innerHTML='0'+minutes +':0'+seconds
-                else
-                currentTimeElement.innerHTML=minutes +':'+seconds
+                clculateTime(counter)
             }
         },1000)
 
@@ -162,6 +152,21 @@ function currentTime(){
   //  play.classList.toggle('fa-play')
    // play.classList.toggle('fa-pause')
 }
+
+function clculateTime(totalSeconds){
+   let minutes=Math.floor(totalSeconds/ 60)
+   let seconds=totalSeconds % 60
+                
+        if(minutes<10 && seconds>=10)
+            currentTimeElement.innerHTML='0'+minutes +':'+seconds
+        else if(minutes>=10 && seconds<10)
+            currentTimeElement.innerHTML=minutes +':0'+seconds
+        else if(minutes<10 && seconds<10)
+            currentTimeElement.innerHTML='0'+minutes +':0'+seconds
+        else
+            currentTimeElement.innerHTML=minutes +':'+seconds
+}
+
 function currentProgress(){
     if(progressBarFlag){
         progressBarFlag=false
@@ -200,7 +205,9 @@ function progressBarOnClick(event){
     counter=Math.floor((width/360)*totalTime)
     progressBarCounter=Math.floor((width/360)*totalTime)
     audio.currentTime=counter
-    setTimeout(function(){
+    clculateTime(counter)
+    if(play.classList.contains('fa-pause'))
+        setTimeout(function(){
         playFunction()
-    },1000)
+        },1000)
 }
