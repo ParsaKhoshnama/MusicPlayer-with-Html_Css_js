@@ -172,12 +172,10 @@ function clculateTime(totalSeconds){
    let minutes=Math.floor(totalSeconds/ 60)
    let seconds=totalSeconds % 60
                 
-        if(minutes<10 && seconds>=10)
+        if(seconds>=10)
             currentTimeElement.innerHTML='0'+minutes +':'+seconds
-        else if(minutes>=10 && seconds<10)
+        else if(seconds<10)
             currentTimeElement.innerHTML=minutes +':0'+seconds
-        else if(minutes<10 && seconds<10)
-            currentTimeElement.innerHTML='0'+minutes +':0'+seconds
         else
             currentTimeElement.innerHTML=minutes +':'+seconds
 }
