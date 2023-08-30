@@ -119,6 +119,7 @@ function showInformation(){
     counter=0
     progressBarCounter=0
     playFlag=true
+    progressBarFlag=true
     title.innerHTML=songs[songsIndex].displayName
     artist.innerHTML=songs[songsIndex].artist
 
@@ -210,13 +211,13 @@ function progressBarOnClick(event){
     audio.pause()
     counter=Math.floor((width/360)*totalTime)
     progressBarCounter=Math.floor((width/360)*totalTime)
+    audio.currentTime=counter
+    clculateTime(counter)
     setTimeout(function(){
-        audio.currentTime=counter
-        clculateTime(counter)
         if(play.classList.contains('fa-pause'))
         {
         
         playFunction()
         }
-    },580)
+    },600)
 }
