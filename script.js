@@ -226,5 +226,5 @@ function progressBarOnClick(event){
         {
         playFunction()
         }
-    },790)
+    },860)
 }
