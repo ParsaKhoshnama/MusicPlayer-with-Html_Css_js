@@ -9,19 +9,19 @@ let duration=document.querySelector('#duration')
 
 let songs=[
     {
-        path:'./media/Jack_Wall_-Adrenaline_ft_Jimmy_Hinson_Gratomic.com.mp3',
+        path:'./media/Jack-Wll-Adrenalin.mp3',
         displayName:'Html Padcast',
         artist:'Ozbi',
         cover:"https://images.genius.com/ee202c6f724ffd4cf61bd01a205eeb47.1000x1000x1.jpg",
     },
     {
-        path:'./media/Jack_Wall-War_Machine_ft_Sergio_Jimenez_Lacima_Gratomic.com.mp3',
+        path:'./media/Jack_Wall-War machine.mp3',
         displayName:'Developing',
         artist:'Flora Cash',
         cover:'./images/peakpx.jpg'
     },
     {
-        path:'./media/Jack_Wall-Heros_Theme__Gratomic.com.mp3',
+        path:'./media/Jack-Wall-Heros_Theme.mp3',
         displayName:'Earn',
         artist:'Linkin Park',
         cover:"https://images.genius.com/c5a58cdaab9f3199214f0e3c26abbd0e.1000x1000x1.jpg"
