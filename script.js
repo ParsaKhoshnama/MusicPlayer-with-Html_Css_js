@@ -5,8 +5,9 @@ let playFlag=true
 let counter=0
 let progressBarCounter=0
 let progressBarFlag=true
-let totalTime
 
+
+let totalTime
 let timer
 let progressTimer
 
@@ -18,7 +19,7 @@ let solidCircle=document.querySelector('.solidCircle')
 let currentTimeElement=document.querySelector('#current-time')
 let duration=document.querySelector('#duration')
 
-totalTime=Math.ceil(audio.duration)
+
 
 let songs=[
     {
@@ -51,12 +52,17 @@ let imgContainer=document.querySelector('.img-container img')
 let title=document.querySelector('#title')
 let artist=document.querySelector('#artist')
 backWard.addEventListener('click',backWardOnClick)
-play.addEventListener('click',playOnClick)
+//play.addEventListener('click',playOnClick)
 forward.addEventListener('click',forwardOnClick)
 
-progressContainer.addEventListener('click',progressBarOnClick)
+//progressContainer.addEventListener('click',progressBarOnClick)
 
 
+setTimeout(function(){
+    totalTime=Math.ceil(audio.duration)
+    play.addEventListener('click',playOnClick)
+    progressContainer.addEventListener('click',progressBarOnClick)
+},1000)
 
 
 
