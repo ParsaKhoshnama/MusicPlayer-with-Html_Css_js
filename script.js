@@ -144,7 +144,7 @@ function currentTime(){
                 clearInterval(timer)
                 return
             }
-           counter++
+           counter +=0.3
            if(counter>totalTime)
            {
                 clearInterval(timer)
@@ -156,7 +156,7 @@ function currentTime(){
              //   solidCircle.style.transform='translateX('+((counter/totalTime)*360)+'px)'
                 clculateTime(counter)
             }
-        },1000)
+        },300)
 
          
     }
@@ -169,11 +169,12 @@ function currentTime(){
 }
 
 function clculateTime(totalSeconds){
+    totalSeconds=Math.floor(totalSeconds)
    let minutes=Math.floor(totalSeconds/ 60)
    let seconds=totalSeconds % 60
                 
         if(seconds>=10)
-            currentTimeElement.innerHTML='0'+minutes +':'+seconds
+            currentTimeElement.innerHTML=minutes +':'+seconds
         else if(seconds<10)
             currentTimeElement.innerHTML=minutes +':0'+seconds
         else
@@ -226,7 +227,7 @@ function progressBarOnClick(event){
         {
         playFunction()
         }
-        else
-            play.addEventListener('click',playOnClick)
-    },900)
+       else
+         play.addEventListener('click',playOnClick)
+    },300)
 }
