@@ -12,6 +12,7 @@ let totalTime
 let timer
 let progressTimer
 
+
 /*Global Variables*/
 let audio=document.querySelector('audio')
 let progressContainer=document.querySelector('.progress-container')
@@ -148,7 +149,9 @@ function currentTime(){
            if(counter>totalTime)
            {
                 clearInterval(timer)
-                showInformation()
+                clculateTime(totalTime)
+                setTimeout(function(){showInformation()},300)
+                //showInformation()
                 
            }
             else{
