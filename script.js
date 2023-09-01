@@ -79,8 +79,23 @@ function backWardOnClick(event){
 function playOnClick(event){
   
    playFunction()
-   play.classList.toggle('fa-play')
-    play.classList.toggle('fa-pause')
+ //  play.classList.toggle('fa-play')
+ //   play.classList.toggle('fa-pause')
+ if(play.classList.contains('fa-play')){
+      play.style.marginRight='30px'
+      play.classList.remove('fa-play')
+      play.classList.add('fa-pause')
+     
+ }
+ else{
+    play.classList.remove('fa-pause')
+    play.style.marginRight='25px'
+    play.classList.add('main-buttonClass2','fa-play')
+    setTimeout(function(){
+        play.classList.remove('main-buttonClass2')
+    },300)
+ }
+
   
 }
 function playFunction(){

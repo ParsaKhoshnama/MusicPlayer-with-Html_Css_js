@@ -143,6 +143,7 @@ user-select: none;
 }
 
 .main-button{
+    margin-right: 25px;
     font-size: 40px;
     position: relative;
     top: 3px;
@@ -182,11 +183,43 @@ user-select: none;
 }
 
 .main-button{
-    transform: rotate(0deg);
-    transition: transform 200ms;
+   /* transform: rotate(0deg);
+     transition: transform 200ms;*/
 }
 
 .fa-pause{
-    transform: rotate(180deg);
+    transform: rotate(90deg);
+    animation-name: Animation1;
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
+
+@keyframes Animation1 {
+    from{
+        transform: rotate(90deg);
+    }to{
+        transform: rotate(180deg);
+    }
+    
+}
+
+@keyframes Animation2 {
+    from{
+        transform: rotate(90deg);
+    }to{
+        transform: rotate(0deg);
+    }
+}
+.main-buttonClass2{
+    transform: rotate(0deg);
+    animation-name: Animation2;
+    animation-duration: 300ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+
 
