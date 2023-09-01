@@ -81,7 +81,7 @@ function playOnClick(event){
    playFunction()
    play.classList.toggle('fa-play')
     play.classList.toggle('fa-pause')
-    
+  
 }
 function playFunction(){
     if(!isPlaying){

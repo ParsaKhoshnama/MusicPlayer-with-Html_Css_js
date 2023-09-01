@@ -180,3 +180,13 @@ user-select: none;
     background-color:#0d47a1 ;
     transition: transform 0.1s linear;
 }
+
+.main-button{
+    transform: rotate(0deg);
+    transition: transform 200ms;
+}
+
+.fa-pause{
+    transform: rotate(180deg);
+}
+
