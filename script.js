@@ -145,7 +145,7 @@ function currentTime(){
                 clearInterval(timer)
                 return
             }
-           counter +=0.2
+           counter +=0.25
            if(counter>totalTime)
            {
                 clearInterval(timer)
@@ -159,7 +159,7 @@ function currentTime(){
              //   solidCircle.style.transform='translateX('+((counter/totalTime)*360)+'px)'
                 clculateTime(counter)
             }
-        },200)
+        },250)
 
          
     }
@@ -192,14 +192,14 @@ function currentProgress(){
                 clearInterval(progressTimer)
                 return
             }
-            progressBarCounter +=0.2
+            progressBarCounter +=0.25
             if(Math.floor(progressBarCounter)>totalTime)
                 clearInterval(progressTimer)
             else{
                    progress.style.width=((progressBarCounter/totalTime)*360)+'px'
                    solidCircle.style.transform='translateX('+((progressBarCounter/totalTime)*360)+'px)'
             }
-        },200)
+        },250)
     }
 }
 
@@ -232,5 +232,5 @@ function progressBarOnClick(event){
         }
        else
          play.addEventListener('click',playOnClick)
-    },200)
+    },250)
 }
