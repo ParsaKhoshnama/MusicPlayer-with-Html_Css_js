@@ -95,7 +95,7 @@ h3{
 }
 
 .progress-container{
-    background-color: #fff;
+    background-color:#81d4fa;
     border-radius: 5px;
     cursor: pointer;
     margin: 40px 20px;
@@ -105,7 +105,7 @@ h3{
 
 
 .progress{
-    background-color: #242323;
+    background-color: #0d47a1;
     border-radius: 5px;
     height: 100%;
     width: 0px;
@@ -177,6 +177,6 @@ user-select: none;
    top:-1.5px;
    left:-2.3px;
    z-index: 10;
-    background-color:#242323 ;
+    background-color:#0d47a1 ;
     transition: transform 0.1s linear;
 }
