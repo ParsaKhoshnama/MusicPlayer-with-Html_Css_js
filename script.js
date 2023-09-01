@@ -100,7 +100,7 @@ function forwardOnClick(event=0){
 }
 
 function showInformation(){
-    currentTimeElement.innerHTML='00:00'
+    currentTimeElement.innerHTML='0:00'
     play.classList.add('fa-play')
     play.classList.remove('fa-pause')
     audio.setAttribute('src',songs[songsIndex].path)
