@@ -93,7 +93,7 @@ function playOnClick(event){
     play.classList.add('main-buttonClass2','fa-play')
     setTimeout(function(){
         play.classList.remove('main-buttonClass2')
-    },300)
+    },200)
  }
 
   

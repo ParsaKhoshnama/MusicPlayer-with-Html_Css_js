@@ -190,7 +190,7 @@ user-select: none;
 .fa-pause{
     transform: rotate(90deg);
     animation-name: Animation1;
-    animation-duration: 300ms;
+    animation-duration: 180ms;
     animation-iteration-count: 1;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
@@ -215,7 +215,7 @@ user-select: none;
 .main-buttonClass2{
     transform: rotate(0deg);
     animation-name: Animation2;
-    animation-duration: 300ms;
+    animation-duration: 180ms;
     animation-iteration-count: 1;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
