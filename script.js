@@ -116,8 +116,14 @@ function forwardOnClick(event=0){
 
 function showInformation(){
     currentTimeElement.innerHTML='0:00'
-    play.classList.add('fa-play')
-    play.classList.remove('fa-pause')
+    if(play.classList.contains('fa-pause'))
+    {
+        play.classList.remove('fa-pause')
+        play.classList.add('fa-play','main-buttonClass2')
+        setTimeout(function(){
+            play.classList.remove('main-buttonClass2')
+        },200)
+    }
     audio.setAttribute('src',songs[songsIndex].path)
     imgContainer.classList.remove('active')
     imgContainer.setAttribute('src',songs[songsIndex].cover)
