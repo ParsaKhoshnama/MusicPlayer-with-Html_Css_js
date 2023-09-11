@@ -213,7 +213,6 @@ user-select: none;
     }
 }
 .main-buttonClass2{
-    transform: rotate(0deg);
     animation-name: Animation2;
     animation-duration: 180ms;
     animation-iteration-count: 1;
