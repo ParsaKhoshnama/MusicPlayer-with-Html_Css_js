@@ -6,14 +6,16 @@ let counter=0
 let progressBarCounter=0
 let progressBarFlag=true
 
+let pageX
 
 
 let totalTime
 let timer
 let progressTimer
-
+let width
 
 /*Global Variables*/
+let body=document.querySelector('body')
 let audio=document.querySelector('audio')
 let progressContainer=document.querySelector('.progress-container')
 let progress=document.querySelector('#progress')
@@ -238,7 +240,7 @@ function progressBarOnClick(event){
     if((event.pageX<progressContainer.offsetLeft) || (event.pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
         return
     else{
-    let width=event.pageX-progressContainer.offsetLeft
+     width=event.pageX-progressContainer.offsetLeft
     progress.style.transition='none'
     solidCircle.style.transition='none'
     progress.style.width=width + 'px'
@@ -278,10 +280,11 @@ function mousedownForForprogressContainer(event){
 
 
 function mousemoveForprogressContainer(event){
+        pageX=event.pageX
         if((event.pageX<progressContainer.offsetLeft) || (event.pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
             return
         else{
-        let width=event.pageX-progressContainer.offsetLeft
+         width=event.pageX-progressContainer.offsetLeft
         progress.style.transition='none'
         solidCircle.style.transition='none'
         progress.style.width=width + 'px'
@@ -290,10 +293,41 @@ function mousemoveForprogressContainer(event){
         clculateTime(counter)
         playFlag=true
         progressBarFlag=true
+        body.addEventListener('mouseup',mouseUpForBody)
         }
     
 }
 
 function mouseupForprogressContainer(event){
+    body.removeEventListener('mouseup',mouseUpForBody)
     progressContainer.removeEventListener('mousemove',mousemoveForprogressContainer)
+}
+
+function mouseUpForBody(event){
+    progressContainer.removeEventListener('mousemove',mousemoveForprogressContainer)
+    body.removeEventListener('mouseup',mouseUpForBody)
+    if(pageX<progressContainer.offsetLeft)
+        width=0
+    else if((pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
+        width=progressContainer.offsetWidth;
+    else
+        width=pageX-progressContainer.offsetLeft
+    progress.style.width=width + 'px'
+    solidCircle.style.transform='translateX('+(width +0.5) + 'px)'
+    counter=Math.floor((width/360)*totalTime)
+    progressBarCounter=Math.floor((width/360)*totalTime)
+    clculateTime(counter)
+    if(play.classList.contains('fa-play'))
+        play.removeEventListener('click',playOnClick)
+    setTimeout(function(){
+        audio.currentTime=counter
+        if(play.classList.contains('fa-pause'))
+        {
+        playFunction()
+        }
+       else
+         play.addEventListener('click',playOnClick)
+    },250)
+
+     
 }
