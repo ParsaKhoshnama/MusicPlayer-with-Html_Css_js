@@ -23,11 +23,10 @@ let duration=document.querySelector('#duration')
 
 
 
-solidCircle.addEventListener('mousedown',mousedownForSolidCircle)
+progressContainer.addEventListener('mousedown',mousedownForForprogressContainer)
 
 
 progressContainer.addEventListener('mouseup',mouseupForprogressContainer)
-
 
 
 
@@ -270,35 +269,26 @@ function progressBarOnClick(event){
 
 
 
-function mousedownForSolidCircle(event){
+function mousedownForForprogressContainer(event){
     progressContainer.addEventListener('mousemove',mousemoveForprogressContainer)
 
 }
 
 
 function mousemoveForprogressContainer(event){
-    
 
         let width=event.pageX-progressContainer.offsetLeft
         progress.style.transition='none'
-    solidCircle.style.transition='none'
+        solidCircle.style.transition='none'
         progress.style.width=width + 'px'
         solidCircle.style.transform='translateX('+(event.pageX-solidCircle.offsetLeft - 2) + 'px)'
         counter=Math.floor((width/360)*totalTime)
         clculateTime(counter)
         playFlag=true
         progressBarFlag=true
-       /* audio.currentTime=counter
-        progress.style.transition='width 0.1s linear'
-        solidCircle.style.transition='transform 0.1s linear'*/
+    
 }
 
 function mouseupForprogressContainer(event){
-
     progressContainer.removeEventListener('mousemove',mousemoveForprogressContainer)
-    setTimeout(function(){
-        audio.currentTime=counter
-        progress.style.transition='width 0.1s linear'
-        solidCircle.style.transition='transform 0.1s linear'
-    },250)
 }
