@@ -281,14 +281,14 @@ function mousedownForForprogressContainer(event){
 
 function mousemoveForprogressContainer(event){
         pageX=event.pageX
-        if((event.pageX<progressContainer.offsetLeft) || (event.pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
+        if((pageX<progressContainer.offsetLeft) || (pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
             return
         else{
-         width=event.pageX-progressContainer.offsetLeft
+         width=pageX-progressContainer.offsetLeft
         progress.style.transition='none'
         solidCircle.style.transition='none'
         progress.style.width=width + 'px'
-        solidCircle.style.transform='translateX('+(event.pageX-solidCircle.offsetLeft - 2) + 'px)'
+        solidCircle.style.transform='translateX('+(pageX-solidCircle.offsetLeft - 2) + 'px)'
         counter=Math.floor((width/360)*totalTime)
         clculateTime(counter)
         playFlag=true
@@ -313,7 +313,7 @@ function mouseUpForBody(event){
     else
         width=pageX-progressContainer.offsetLeft
     progress.style.width=width + 'px'
-    solidCircle.style.transform='translateX('+(width +0.5) + 'px)'
+    solidCircle.style.transform='translateX('+(width +0.4) + 'px)'
     counter=Math.floor((width/360)*totalTime)
     progressBarCounter=Math.floor((width/360)*totalTime)
     clculateTime(counter)
