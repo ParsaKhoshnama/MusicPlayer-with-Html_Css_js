@@ -235,6 +235,9 @@ function currentProgress(){
 
 
 function progressBarOnClick(event){
+    if((event.pageX<progressContainer.offsetLeft) || (event.pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
+        return
+    else{
     let width=event.pageX-progressContainer.offsetLeft
     progress.style.transition='none'
     solidCircle.style.transition='none'
@@ -262,6 +265,8 @@ function progressBarOnClick(event){
        else
          play.addEventListener('click',playOnClick)
     },250)
+
+   }
 }
 
 
@@ -273,7 +278,9 @@ function mousedownForForprogressContainer(event){
 
 
 function mousemoveForprogressContainer(event){
-
+        if((event.pageX<progressContainer.offsetLeft) || (event.pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
+            return
+        else{
         let width=event.pageX-progressContainer.offsetLeft
         progress.style.transition='none'
         solidCircle.style.transition='none'
@@ -283,6 +290,7 @@ function mousemoveForprogressContainer(event){
         clculateTime(counter)
         playFlag=true
         progressBarFlag=true
+        }
     
 }
 
