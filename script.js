@@ -6,7 +6,7 @@ let counter=0
 let progressBarCounter=0
 let progressBarFlag=true
 
-let isPlaying=false
+
 
 let totalTime
 let timer
@@ -110,10 +110,7 @@ function playOnClick(event){
   
 }
 function playFunction(){
-    if(!isPlaying){
-        audio.play()
-        isPlaying=true
-    }
+    
     currentTime()
    currentProgress()
 }
