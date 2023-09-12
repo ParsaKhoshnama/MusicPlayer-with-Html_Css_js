@@ -244,9 +244,11 @@ function progressBarOnClick(event){
     progress.style.transition='none'
     solidCircle.style.transition='none'
     progress.style.width=width + 'px'
-    solidCircle.style.transform='translateX('+(event.pageX-solidCircle.offsetLeft - 2) + 'px)'
+    solidCircle.style.transform='translateX('+(event.pageX-solidCircle.offsetLeft - (solidCircle.offsetWidth/2)) + 'px)'
   //  clearInterval(timer)
   //  clearInterval(progressTimer)
+
+    
     progress.style.transition='width 0.1s linear'
     solidCircle.style.transition='transform 0.1s linear'
     
@@ -288,7 +290,7 @@ function mousemoveForprogressContainer(event){
         progress.style.transition='none'
         solidCircle.style.transition='none'
         progress.style.width=width + 'px'
-        solidCircle.style.transform='translateX('+(pageX-solidCircle.offsetLeft - 2) + 'px)'
+        solidCircle.style.transform='translateX('+(pageX-solidCircle.offsetLeft - (solidCircle.offsetWidth/2) ) + 'px)'
         counter=Math.floor((width/360)*totalTime)
         clculateTime(counter)
         playFlag=true
