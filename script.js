@@ -34,8 +34,6 @@ progressContainer.addEventListener('mouseup',mouseupForprogressContainer)
 
 
 
-
-
 let songs=[
     {
         path:'./media/Jack-Wll-Adrenalin.mp3',
@@ -227,7 +225,7 @@ function currentProgress(){
             if(Math.floor(progressBarCounter)>totalTime)
                 clearInterval(progressTimer)
             else{
-                   progress.style.width=((progressBarCounter/totalTime)*360)+'px'
+                   progress.style.width=((progressBarCounter/totalTime)*progressContainer.offsetWidth)+'px'
                    solidCircle.style.transform='translateX('+((progressBarCounter/totalTime)*360)+'px)'
             }
         },250)
@@ -255,7 +253,7 @@ function progressBarOnClick(event){
     playFlag=true
     progressBarFlag=true
    // audio.pause()
-    counter=Math.floor((width/360)*totalTime)
+    counter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
     progressBarCounter=Math.floor((width/360)*totalTime)
     clculateTime(counter)
     if(play.classList.contains('fa-play'))
@@ -291,7 +289,7 @@ function mousemoveForprogressContainer(event){
         solidCircle.style.transition='none'
         progress.style.width=width + 'px'
         solidCircle.style.transform='translateX('+(pageX-solidCircle.offsetLeft - (solidCircle.offsetWidth/2) ) + 'px)'
-        counter=Math.floor((width/360)*totalTime)
+        counter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
         clculateTime(counter)
         playFlag=true
         progressBarFlag=true
@@ -316,8 +314,8 @@ function mouseUpForBody(event){
         width=pageX-progressContainer.offsetLeft
     progress.style.width=width + 'px'
     solidCircle.style.transform='translateX('+(width - 1) + 'px)'
-    counter=Math.floor((width/360)*totalTime)
-    progressBarCounter=Math.floor((width/360)*totalTime)
+    counter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
+    progressBarCounter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
     clculateTime(counter)
     if(play.classList.contains('fa-play'))
         play.removeEventListener('click',playOnClick)
