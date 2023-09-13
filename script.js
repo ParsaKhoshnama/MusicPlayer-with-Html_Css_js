@@ -294,18 +294,20 @@ function mousemoveForprogressContainer(event){
         playFlag=true
         progressBarFlag=true
         body.addEventListener('mouseup',mouseUpForBody)
+        body.addEventListener('mousemove',mousemoveForBody)
         }
     
 }
 
 function mouseupForprogressContainer(event){
+    body.removeEventListener('mousemove',mousemoveForBody)
     body.removeEventListener('mouseup',mouseUpForBody)
     progressContainer.removeEventListener('mousemove',mousemoveForprogressContainer)
 }
 
-function mouseUpForBody(event){
-    progressContainer.removeEventListener('mousemove',mousemoveForprogressContainer)
-    body.removeEventListener('mouseup',mouseUpForBody)
+function mousemoveForBody(event){
+    pageX=event.pageX
+    width=pageX-progressContainer.offsetLeft
     if(pageX<progressContainer.offsetLeft)
         width=0
     else if((pageX - progressContainer.offsetLeft)>progressContainer.offsetWidth)
@@ -313,10 +315,16 @@ function mouseUpForBody(event){
     else
         width=pageX-progressContainer.offsetLeft
     progress.style.width=width + 'px'
-    solidCircle.style.transform='translateX('+(width - 1) + 'px)'
+    solidCircle.style.transform='translateX('+(width - (solidCircle.offsetWidth/2)) + 'px)'
     counter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
     progressBarCounter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
     clculateTime(counter)
+}
+
+function mouseUpForBody(event){
+    body.removeEventListener('mousemove',mousemoveForBody)
+    progressContainer.removeEventListener('mousemove',mousemoveForprogressContainer)
+    body.removeEventListener('mouseup',mouseUpForBody)
     if(play.classList.contains('fa-play'))
         play.removeEventListener('click',playOnClick)
     setTimeout(function(){
