@@ -315,7 +315,7 @@ function mousemoveForBody(event){
     else
         width=pageX-progressContainer.offsetLeft
     progress.style.width=width + 'px'
-    solidCircle.style.transform='translateX('+(width - (solidCircle.offsetWidth/2)) + 'px)'
+    solidCircle.style.transform='translateX('+(width - 1) + 'px)'
     counter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
     progressBarCounter=Math.floor((width/progressContainer.offsetWidth)*totalTime)
     clculateTime(counter)
